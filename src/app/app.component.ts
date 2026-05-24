@@ -9,6 +9,7 @@ import { EnrollmentComponent } from './components/enrollment/enrollment.componen
 import { PricingComponent } from './components/pricing/pricing.component';
 import { FaqComponent } from './components/faq/faq.component';
 import { TestimonialsComponent } from './components/testimonials/testimonials.component';
+import { FacilityComponent } from './components/facility/facility.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ModalComponent } from './components/modal/modal.component';
 
@@ -23,6 +24,7 @@ import { ModalComponent } from './components/modal/modal.component';
     PricingComponent,
     FaqComponent,
     TestimonialsComponent,
+    FacilityComponent,
     FooterComponent,
     ModalComponent,
     RouterOutlet,
@@ -83,7 +85,9 @@ export class App implements OnInit {
         'app-faq h2',
         'app-faq .glass-card',
         'app-testimonials h2',
-        'app-testimonials article'
+        'app-testimonials article',
+        'app-facility h2',
+        'app-facility .reveal-on-scroll'
       ];
       
       selectors.forEach(sel => {

@@ -1,0 +1,43 @@
+<section id="facility" class="py-24 sm:py-32 relative bg-dark overflow-hidden">
+  <!-- Decorative Ambient Glow Background -->
+  <div class="absolute bottom-1/4 left-0 w-96 h-96 bg-gold/5 rounded-full filter blur-[120px] pointer-events-none select-none"></div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+      
+      <!-- Left Column: Copy & Call-To-Action -->
+      <div class="text-left flex flex-col items-start reveal-on-scroll">
+        <span class="text-xs font-bold tracking-widest text-gold uppercase font-inter block mb-4">Coliseum Architecture</span>
+        <h2 class="text-3xl sm:text-5xl font-black font-outfit text-white uppercase tracking-tight mb-6">
+          Explore the Facility
+        </h2>
+        <div class="w-20 h-1 bg-gold mb-8"></div>
+        <p class="text-gray-400 font-inter font-light text-base sm:text-lg leading-relaxed mb-10 max-w-xl">
+          A meticulous spatial rendering of our physical sanctuary, designed to optimize focus, biophilic recovery, and training flow. Every square meter is calibrated to reduce cognitive friction and amplify physical output.
+        </p>
+        <button 
+          (click)="openApplicationModal()"
+          class="px-8 py-4 rounded-full bg-gold hover:bg-gold-hover text-dark font-black tracking-wider text-xs sm:text-sm uppercase transition-all duration-300 shadow-lg shadow-gold/20 hover:scale-105 glow-gold-btn"
+        >
+          Order Tour
+        </button>
+      </div>
+
+      <!-- Right Column: Premium Blueprint Frame -->
+      <div class="reveal-on-scroll">
+        <article class="glass-card glass-card-hover rounded-3xl p-4 sm:p-6 overflow-hidden flex items-center justify-center relative group">
+          <!-- Subtle Glowing Overlay on Hover -->
+          <div class="absolute inset-0 bg-gradient-to-tr from-gold/0 via-gold/0 to-gold/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl pointer-events-none"></div>
+          
+          <img 
+            src="/images/facility-blueprint.png" 
+            alt="Titan Elite Premium Facility 3D Floor Plan Layout" 
+            loading="lazy"
+            class="w-full h-auto rounded-2xl object-cover transform group-hover:scale-[1.02] transition-transform duration-700 relative z-10"
+          />
+        </article>
+      </div>
+
+    </div>
+  </div>
+</section>
