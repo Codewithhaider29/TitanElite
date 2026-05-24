@@ -90,7 +90,29 @@
       }
     </script>
   </head>
-  <body>
+  <body style="background-color: #121212;">
+    <!-- True Global Loader (Shows instantly before Angular bundles load) -->
+    <div id="global-loader" style="position: fixed; inset: 0; z-index: 99999; background: #121212; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: opacity 0.8s ease-in-out;">
+      <div style="text-align: center; font-family: 'Outfit', sans-serif;">
+        <span style="font-size: 2.25rem; font-weight: 900; letter-spacing: 0.1em; color: white;">
+          TITAN<span style="color: #FFD700; text-shadow: 0 0 12px rgba(255, 215, 0, 0.4);">ELITE</span>
+        </span>
+        
+        <div style="width: 200px; height: 2px; background: rgba(255,255,255,0.1); border-radius: 999px; margin: 24px auto 16px auto; overflow: hidden; position: relative;">
+          <!-- Inline CSS animation for marquee line -->
+          <style>
+            @keyframes load-sweep { 0% { transform: translateX(-100%); } 100% { transform: translateX(200%); } }
+            @keyframes pulse-text { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+          </style>
+          <div style="height: 100%; width: 50%; background: #FFD700; border-radius: 999px; animation: load-sweep 1.5s linear infinite;"></div>
+        </div>
+        
+        <span style="font-size: 10px; font-weight: bold; letter-spacing: 0.1em; color: #888; text-transform: uppercase; font-family: 'Inter', sans-serif; animation: pulse-text 2s infinite;">
+          Initializing Protocol...
+        </span>
+      </div>
+    </div>
+
     <app-root></app-root>
   </body>
 </html>

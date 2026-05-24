@@ -14,6 +14,9 @@
   --font-inter: 'Inter', sans-serif;
 }
 
+/* ============================================
+   GLASS UTILITIES
+============================================ */
 @utility glass-card {
   background: rgba(255, 255, 255, 0.03);
   backdrop-filter: blur(16px);
@@ -22,13 +25,13 @@
 }
 
 @utility glass-card-hover {
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.45s cubic-bezier(0.16, 1, 0.3, 1);
 
   &:hover {
-    background: rgba(255, 255, 255, 0.07);
-    border-color: #FFD700;
-    transform: translateY(-10px) scale(1.04);
-    box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.7), 0 0 25px 0 rgba(255, 215, 0, 0.15);
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 215, 0, 0.5);
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 24px 48px -16px rgba(0, 0, 0, 0.8), 0 0 30px 0 rgba(255, 215, 0, 0.12);
   }
 }
 
@@ -39,6 +42,17 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
+@utility glass-nav-scrolled {
+  background: rgba(18, 18, 18, 0.97);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-bottom: 1px solid rgba(255, 215, 0, 0.12);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* ============================================
+   GLOW & TEXT UTILITIES
+============================================ */
 @utility text-glow-gold {
   text-shadow: 0 0 12px rgba(255, 215, 0, 0.4);
 }
@@ -48,10 +62,13 @@
   transition: all 0.3s ease-in-out;
 
   &:hover {
-    box-shadow: 0 0 15px 2px rgba(255, 215, 0, 0.35);
+    box-shadow: 0 0 20px 3px rgba(255, 215, 0, 0.3);
   }
 }
 
+/* ============================================
+   BASE LAYER
+============================================ */
 @layer base {
   html {
     scroll-behavior: smooth;
@@ -66,7 +83,7 @@
 
   /* Custom Premium Scrollbar */
   ::-webkit-scrollbar {
-    width: 8px;
+    width: 6px;
   }
   ::-webkit-scrollbar-track {
     background: #121212;
@@ -74,19 +91,141 @@
   ::-webkit-scrollbar-thumb {
     background: #2A2A2A;
     border-radius: 4px;
-    border: 2px solid #121212;
   }
   ::-webkit-scrollbar-thumb:hover {
     background: #FFD700;
   }
 }
 
-/* Custom Lightweight Scroll Reveal */
+/* ============================================
+   KEYFRAME ANIMATIONS
+============================================ */
+@keyframes shimmer-sweep {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0px) scale(1); }
+  50% { transform: translateY(-20px) scale(1.05); }
+}
+
+@keyframes float-medium {
+  0%, 100% { transform: translateY(0px) translateX(0px); }
+  33% { transform: translateY(-15px) translateX(10px); }
+  66% { transform: translateY(8px) translateX(-8px); }
+}
+
+@keyframes pulse-gold {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.4); }
+  50% { box-shadow: 0 0 0 12px rgba(255, 215, 0, 0); }
+}
+
+@keyframes slide-up-fade {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fade-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes marquee-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes width-expand {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+/* ============================================
+   ANIMATION UTILITY CLASSES
+============================================ */
+.animate-float-slow {
+  animation: float-slow 8s ease-in-out infinite;
+}
+
+.animate-float-medium {
+  animation: float-medium 6s ease-in-out infinite;
+}
+
+.animate-float-fast {
+  animation: float-medium 4s ease-in-out infinite reverse;
+}
+
+.animate-pulse-gold {
+  animation: pulse-gold 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.animate-marquee {
+  animation: marquee-scroll 25s linear infinite;
+}
+
+.animate-marquee-reverse {
+  animation: marquee-scroll 25s linear infinite reverse;
+}
+
+.shimmer-text {
+  background: linear-gradient(
+    90deg,
+    #FFD700 0%,
+    #FFFACD 30%,
+    #FFD700 50%,
+    #E6C200 70%,
+    #FFD700 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer-sweep 3s linear infinite;
+}
+
+/* ============================================
+   STAGGER ANIMATION DELAYS
+============================================ */
+.stagger-1 { animation-delay: 0.1s; }
+.stagger-2 { animation-delay: 0.2s; }
+.stagger-3 { animation-delay: 0.3s; }
+.stagger-4 { animation-delay: 0.4s; }
+.stagger-5 { animation-delay: 0.5s; }
+.stagger-6 { animation-delay: 0.6s; }
+
+/* ============================================
+   SCROLL REVEAL SYSTEM
+============================================ */
 .reveal-on-scroll {
   opacity: 0;
   transform: translateY(35px);
   will-change: transform, opacity;
-  transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .reveal-on-scroll.revealed {
@@ -94,3 +233,84 @@
   transform: translateY(0);
 }
 
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-left.revealed {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.reveal-right {
+  opacity: 0;
+  transform: translateX(30px);
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-right.revealed {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Stagger delays for revealed children */
+.reveal-on-scroll:nth-child(1),
+.reveal-left:nth-child(1),
+.reveal-right:nth-child(1) { transition-delay: 0s; }
+
+.reveal-on-scroll:nth-child(2),
+.reveal-left:nth-child(2),
+.reveal-right:nth-child(2) { transition-delay: 0.12s; }
+
+.reveal-on-scroll:nth-child(3),
+.reveal-left:nth-child(3),
+.reveal-right:nth-child(3) { transition-delay: 0.24s; }
+
+.reveal-on-scroll:nth-child(4),
+.reveal-left:nth-child(4),
+.reveal-right:nth-child(4) { transition-delay: 0.36s; }
+
+/* ============================================
+   MOBILE MENU OVERLAY
+============================================ */
+.mobile-menu-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  background: rgba(18, 18, 18, 0.98);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  transform: translateX(100%);
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow-y: auto;
+}
+
+.mobile-menu-overlay.open {
+  transform: translateX(0);
+}
+
+/* ============================================
+   MARQUEE TRACK
+============================================ */
+.marquee-track {
+  display: flex;
+  width: max-content;
+}
+
+/* ============================================
+   GOLD DIVIDER LINE ANIMATION
+============================================ */
+.gold-line-animated {
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #FFD700, transparent);
+  transition: width 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.gold-line-animated.revealed {
+  width: 80px;
+}

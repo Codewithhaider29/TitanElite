@@ -6,7 +6,7 @@
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
       
       <!-- Left Column: Copy & Call-To-Action -->
-      <div class="text-left flex flex-col items-start reveal-on-scroll">
+      <div class="text-left flex flex-col items-start">
         <span class="text-xs font-bold tracking-widest text-gold uppercase font-inter block mb-4">Coliseum Architecture</span>
         <h2 class="text-3xl sm:text-5xl font-black font-outfit text-white uppercase tracking-tight mb-6">
           Explore the Facility
@@ -24,19 +24,17 @@
       </div>
 
       <!-- Right Column: Premium Blueprint Frame -->
-      <div class="reveal-on-scroll">
-        <article class="glass-card glass-card-hover rounded-3xl p-4 sm:p-6 overflow-hidden flex items-center justify-center relative group">
-          <!-- Subtle Glowing Overlay on Hover -->
-          <div class="absolute inset-0 bg-gradient-to-tr from-gold/0 via-gold/0 to-gold/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl pointer-events-none"></div>
-          
-          <img 
-            src="/images/facility-blueprint.png" 
-            alt="Titan Elite Premium Facility 3D Floor Plan Layout" 
-            loading="lazy"
-            class="w-full h-auto rounded-2xl object-cover transform group-hover:scale-[1.02] transition-transform duration-700 relative z-10"
-          />
-        </article>
-      </div>
+      <article class="glass-card glass-card-hover rounded-3xl p-4 sm:p-6 overflow-hidden flex items-center justify-center relative group w-full">
+        <!-- Subtle Glowing Overlay on Hover -->
+        <div class="absolute inset-0 bg-gradient-to-tr from-gold/0 via-gold/0 to-gold/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl pointer-events-none"></div>
+        
+        <img 
+          src="/images/facility-blueprint.png" 
+          alt="Titan Elite Premium Facility 3D Floor Plan Layout" 
+          loading="lazy"
+          class="w-full h-auto rounded-2xl object-cover transform group-hover:scale-[1.02] transition-transform duration-700 relative z-10"
+        />
+      </article>
 
     </div>
   </div>

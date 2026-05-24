@@ -4,12 +4,14 @@ import { isPlatformBrowser } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { HeroComponent } from './components/hero/hero.component';
+import { StatsBarComponent } from './components/stats-bar/stats-bar.component';
 import { FeaturesComponent } from './components/features/features.component';
 import { EnrollmentComponent } from './components/enrollment/enrollment.component';
 import { PricingComponent } from './components/pricing/pricing.component';
-import { FaqComponent } from './components/faq/faq.component';
 import { TestimonialsComponent } from './components/testimonials/testimonials.component';
 import { FacilityComponent } from './components/facility/facility.component';
+import { FaqComponent } from './components/faq/faq.component';
+import { CtaBannerComponent } from './components/cta-banner/cta-banner.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ModalComponent } from './components/modal/modal.component';
 
@@ -19,12 +21,14 @@ import { ModalComponent } from './components/modal/modal.component';
   imports: [
     NavbarComponent,
     HeroComponent,
+    StatsBarComponent,
     FeaturesComponent,
     EnrollmentComponent,
     PricingComponent,
-    FaqComponent,
     TestimonialsComponent,
     FacilityComponent,
+    FaqComponent,
+    CtaBannerComponent,
     FooterComponent,
     ModalComponent,
     RouterOutlet,
@@ -35,7 +39,6 @@ import { ModalComponent } from './components/modal/modal.component';
 export class App implements OnInit {
   private platformId = inject(PLATFORM_ID);
 
-  // Global Signal for Membership Application Modal visibility
   isModalOpen = signal(false);
 
   openModal() {
@@ -54,112 +57,80 @@ export class App implements OnInit {
   ngOnInit() {
     this.updateSEO();
     if (isPlatformBrowser(this.platformId)) {
+      // Fade out global loader from index.html
+      setTimeout(() => {
+        const loader = document.getElementById('global-loader');
+        if (loader) {
+          loader.style.opacity = '0';
+          setTimeout(() => loader.remove(), 800); // Remove from DOM after fade out
+        }
+      }, 1000);
+
       this.initScrollReveal();
     }
   }
 
   private initScrollReveal() {
-    // Custom High-Performance Intersection Observer for Scroll Animations
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('revealed');
-            observer.unobserve(entry.target); // Unobserve to animate once and conserve performance
-          }
-        });
-      },
-      { threshold: 0.05, rootMargin: '0px 0px -50px 0px' }
-    );
+    import('motion').then(({ inView, animate }) => {
+      setTimeout(() => {
+        const revealSelectors = [
+          'app-features .text-center',
+          'app-features article',
+          'app-enrollment .text-center',
+          'app-enrollment article',
+          'app-pricing .text-center',
+          'app-pricing article',
+          'app-faq .text-center',
+          'app-faq .glass-card',
+          'app-testimonials .text-center',
+          'app-testimonials article',
+          'app-testimonials div.glass-card',
+          'app-facility .text-left',
+          'app-facility article',
+          'app-cta-banner .text-center',
+        ];
 
-    // Dynamically target major sections, program grids, membership plans, and success cards
-    setTimeout(() => {
-      const selectors = [
-        '#hero text-center',
-        'app-features h2',
-        'app-features article',
-        'app-enrollment h2',
-        'app-enrollment article',
-        'app-pricing h2',
-        'app-pricing article',
-        'app-faq h2',
-        'app-faq .glass-card',
-        'app-testimonials h2',
-        'app-testimonials article',
-        'app-facility h2',
-        'app-facility .reveal-on-scroll'
-      ];
-      
-      selectors.forEach(sel => {
-        document.querySelectorAll(sel).forEach((el) => {
-          el.classList.add('reveal-on-scroll');
-          observer.observe(el);
+        revealSelectors.forEach(sel => {
+          document.querySelectorAll(sel).forEach((el: any) => {
+            // Initial state
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(40px)';
+
+            // Framer Motion vanilla scroll reveal
+            inView(el, () => {
+              animate(el, 
+                { opacity: 1, transform: 'translateY(0px)' }, 
+                { duration: 0.9, ease: [0.16, 1, 0.3, 1] }
+              );
+            }, { amount: 0.05 });
+          });
         });
-      });
-    }, 150);
+      }, 500);
+    });
   }
 
   private updateSEO() {
-    // Dynamic Page Title for premium brand SEO positioning
     this.titleService.setTitle('Titan Elite | Premium Fitness & High-Science Athletic Training');
 
-    // Dynamic Meta Tags for search engine ranking
-    this.metaService.updateTag({ 
-      name: 'description', 
-      content: 'Elevate your physical baseline at Titan Elite. Explore our ultra-premium training spaces, custom biomechanical profiling, cryotherapy recovery suites, and world-class master coaching.' 
+    this.metaService.updateTag({
+      name: 'description',
+      content: 'Elevate your physical baseline at Titan Elite. Explore our ultra-premium training spaces, custom biomechanical profiling, cryotherapy recovery suites, and world-class master coaching.'
     });
 
-    this.metaService.updateTag({ 
-      name: 'keywords', 
-      content: 'premium fitness, elite coaching, personal trainer, luxury gym, cryotherapy, sports biomechanics, bespoke nutrition, athletic training, elite recovery, high-performance training' 
+    this.metaService.updateTag({
+      name: 'keywords',
+      content: 'premium fitness, elite coaching, personal trainer, luxury gym, cryotherapy, sports biomechanics, bespoke nutrition, athletic training, elite recovery, high-performance training'
     });
 
-    this.metaService.updateTag({ 
-      name: 'robots', 
-      content: 'index, follow' 
-    });
+    this.metaService.updateTag({ name: 'robots', content: 'index, follow' });
 
-    // OpenGraph Social Media integration
-    this.metaService.updateTag({ 
-      property: 'og:title', 
-      content: 'Titan Elite | Premium Fitness & High-Science Athletic Training' 
-    });
+    this.metaService.updateTag({ property: 'og:title', content: 'Titan Elite | Premium Fitness & High-Science Athletic Training' });
+    this.metaService.updateTag({ property: 'og:description', content: 'Elevate your physical baseline at Titan Elite.' });
+    this.metaService.updateTag({ property: 'og:image', content: '/images/hero-bg.png' });
+    this.metaService.updateTag({ property: 'og:type', content: 'website' });
 
-    this.metaService.updateTag({ 
-      property: 'og:description', 
-      content: 'Elevate your physical baseline at Titan Elite. Explore our ultra-premium training spaces, custom biomechanical profiling, cryotherapy recovery suites, and world-class master coaching.' 
-    });
-
-    this.metaService.updateTag({ 
-      property: 'og:image', 
-      content: '/images/hero-bg.png' 
-    });
-
-    this.metaService.updateTag({ 
-      property: 'og:type', 
-      content: 'website' 
-    });
-
-    // Twitter Card optimization
-    this.metaService.updateTag({ 
-      name: 'twitter:card', 
-      content: 'summary_large_image' 
-    });
-
-    this.metaService.updateTag({ 
-      name: 'twitter:title', 
-      content: 'Titan Elite | Premium Fitness & High-Science Athletic Training' 
-    });
-
-    this.metaService.updateTag({ 
-      name: 'twitter:description', 
-      content: 'Elevate your physical baseline at Titan Elite. Explore our ultra-premium training spaces, custom biomechanical profiling, cryotherapy recovery suites, and world-class master coaching.' 
-    });
-
-    this.metaService.updateTag({ 
-      name: 'twitter:image', 
-      content: '/images/hero-bg.png' 
-    });
+    this.metaService.updateTag({ name: 'twitter:card', content: 'summary_large_image' });
+    this.metaService.updateTag({ name: 'twitter:title', content: 'Titan Elite | Premium Fitness & High-Science Athletic Training' });
+    this.metaService.updateTag({ name: 'twitter:image', content: '/images/hero-bg.png' });
   }
 }
-

@@ -1,0 +1,63 @@
+<!-- Pre-Footer Conversion CTA Banner -->
+<section id="cta" class="relative py-28 sm:py-40 bg-dark overflow-hidden">
+
+  <!-- Animated ambient blobs -->
+  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gold/[0.06] rounded-full filter blur-[120px] pointer-events-none animate-float-slow"></div>
+  <div class="absolute top-0 right-0 w-80 h-80 bg-gold/[0.04] rounded-full filter blur-[100px] pointer-events-none animate-float-medium"></div>
+  <div class="absolute bottom-0 left-0 w-64 h-64 bg-gold/[0.03] rounded-full filter blur-[80px] pointer-events-none animate-float-fast"></div>
+
+  <!-- Gold top border line -->
+  <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent"></div>
+
+  <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+
+    <!-- Exclusivity Badge -->
+    <div class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full border border-gold/30 bg-gold/5 backdrop-blur-md mb-8">
+      <span class="w-2 h-2 rounded-full bg-gold animate-pulse"></span>
+      <span class="text-[10px] font-black tracking-widest text-gold uppercase font-inter">Limited June 2025 Intake</span>
+    </div>
+
+    <!-- Main CTA Headline -->
+    <h2 class="text-4xl sm:text-6xl md:text-7xl font-black font-outfit text-white uppercase tracking-tight leading-none mb-6">
+      Ready to <span class="shimmer-text">Elevate</span><br class="hidden sm:block" />
+      Your Standard?
+    </h2>
+
+    <!-- Supporting Copy -->
+    <p class="max-w-2xl mx-auto text-base sm:text-lg text-gray-400 font-inter font-light leading-relaxed mb-12">
+      Join an exclusive network of elite athletes, high-performing executives, and scientific performance optimizers. Your transformation begins with a single application.
+    </p>
+
+    <!-- CTA Buttons -->
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
+      <button
+        (click)="openApplicationModal()"
+        class="w-full sm:w-auto px-10 py-5 rounded-full bg-gold hover:bg-gold-hover text-dark font-black tracking-wider uppercase text-sm shadow-2xl shadow-gold/30 transition-all duration-300 hover:-translate-y-1 glow-gold-btn"
+      >
+        Apply for Membership
+      </button>
+      <button
+        class="w-full sm:w-auto px-10 py-5 rounded-full bg-white/5 border border-white/15 hover:border-gold/50 hover:bg-white/10 text-white font-bold tracking-wider uppercase text-sm backdrop-blur-md transition-all duration-300 hover:-translate-y-1"
+      >
+        Download Brochure
+      </button>
+    </div>
+
+    <!-- Stats Row -->
+    <div class="grid grid-cols-3 gap-4 sm:gap-8 max-w-xl mx-auto">
+      <div class="text-center">
+        <div class="text-2xl sm:text-3xl font-black font-outfit text-gold mb-1">5,000+</div>
+        <div class="text-[9px] sm:text-xs font-bold tracking-widest text-gray-500 uppercase font-inter">Members</div>
+      </div>
+      <div class="text-center border-x border-white/10">
+        <div class="text-2xl sm:text-3xl font-black font-outfit text-white mb-1">98%</div>
+        <div class="text-[9px] sm:text-xs font-bold tracking-widest text-gray-500 uppercase font-inter">Retention Rate</div>
+      </div>
+      <div class="text-center">
+        <div class="text-2xl sm:text-3xl font-black font-outfit text-gold mb-1">12+</div>
+        <div class="text-[9px] sm:text-xs font-bold tracking-widest text-gray-500 uppercase font-inter">Years Excellence</div>
+      </div>
+    </div>
+
+  </div>
+</section>
