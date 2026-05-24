@@ -1,0 +1,64 @@
+<header class="fixed top-0 left-0 w-full z-50 glass-nav transition-all duration-300">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-20">
+      <!-- Logo -->
+      <div class="flex-shrink-0 flex items-center cursor-pointer" (click)="scrollToSection('hero')">
+        <span class="text-2xl font-black font-outfit tracking-widest text-white select-none">
+          TITAN<span class="text-gold text-glow-gold">ELITE</span>
+        </span>
+      </div>
+
+      <!-- Desktop Navigation -->
+      <nav class="hidden md:flex items-center space-x-8 font-inter text-sm font-semibold tracking-wide">
+        <a (click)="scrollToSection('features')" class="text-gray-300 hover:text-gold cursor-pointer transition-colors duration-300 relative py-2 group">
+          Offerings
+          <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gold transition-all duration-300 group-hover:w-full"></span>
+        </a>
+        <a (click)="scrollToSection('pricing')" class="text-gray-300 hover:text-gold cursor-pointer transition-colors duration-300 relative py-2 group">
+          Memberships
+          <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gold transition-all duration-300 group-hover:w-full"></span>
+        </a>
+        <a (click)="scrollToSection('testimonials')" class="text-gray-300 hover:text-gold cursor-pointer transition-colors duration-300 relative py-2 group">
+          Success Stories
+          <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gold transition-all duration-300 group-hover:w-full"></span>
+        </a>
+      </nav>
+
+      <!-- Desktop CTA -->
+      <div class="hidden md:flex items-center">
+        <button (click)="openApplicationModal()" class="px-6 py-2.5 rounded-full bg-gold hover:bg-gold-hover text-dark font-black tracking-wider text-xs uppercase shadow-lg shadow-gold/20 transition-all duration-300 hover:-translate-y-0.5 glow-gold-btn">
+          Join the Elite
+        </button>
+      </div>
+
+      <!-- Mobile menu button -->
+      <div class="flex md:hidden">
+        <button (click)="toggleMenu()" type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-white/5 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-gold transition-all duration-300" aria-controls="mobile-menu" [aria-expanded]="isMenuOpen()">
+          <span class="sr-only">Open main menu</span>
+          <!-- Hamburger Icon with transitions -->
+          <svg class="h-6 w-6 transform transition-transform duration-300" [class.rotate-90]="isMenuOpen()" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            @if (isMenuOpen()) {
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            } @else {
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            }
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Menu, show/hide based on menu state. -->
+  <div class="md:hidden overflow-hidden transition-all duration-500 max-h-0 bg-dark/95 border-b border-white/10" 
+       [class.max-h-[300px]]="isMenuOpen()" 
+       id="mobile-menu">
+    <div class="px-4 pt-2 pb-6 space-y-4 font-inter font-bold tracking-wide">
+      <a (click)="scrollToSection('features')" class="block px-3 py-2.5 rounded-md text-base text-gray-300 hover:text-white hover:bg-white/5 cursor-pointer transition-all duration-300">Offerings</a>
+      <a (click)="scrollToSection('pricing')" class="block px-3 py-2.5 rounded-md text-base text-gray-300 hover:text-white hover:bg-white/5 cursor-pointer transition-all duration-300">Memberships</a>
+      <a (click)="scrollToSection('testimonials')" class="block px-3 py-2.5 rounded-md text-base text-gray-300 hover:text-white hover:bg-white/5 cursor-pointer transition-all duration-300">Success Stories</a>
+      <button (click)="openApplicationModal()" class="w-full mt-4 px-6 py-3 rounded-full bg-gold text-dark font-black tracking-wider text-sm uppercase text-center transition-all duration-300 shadow-md shadow-gold/10">
+        Join the Elite
+      </button>
+    </div>
+  </div>
+</header>

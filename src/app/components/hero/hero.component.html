@@ -1,0 +1,108 @@
+<section id="hero" class="relative min-h-screen flex items-center justify-center pt-24 pb-16 overflow-hidden bg-dark">
+  <!-- Optimized LCP Background Image -->
+  <div class="absolute inset-0 z-0">
+    <img 
+      ngSrc="/images/hero-bg.png" 
+      fill 
+      priority 
+      alt="Titan Elite Luxury Training Facility" 
+      class="object-cover object-center opacity-30 select-none pointer-events-none"
+    />
+    <!-- Premium radial dark overlay to focus content -->
+    <div class="absolute inset-0 bg-gradient-to-t from-dark via-dark/80 to-transparent"></div>
+    <div class="absolute inset-0 bg-radial from-transparent via-dark/40 to-dark"></div>
+  </div>
+
+  <!-- Hero Content -->
+  <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mt-8">
+    <!-- Local SEO Breadcrumb trail -->
+    <nav class="flex justify-center items-center gap-2 mb-6 font-inter text-[10px] font-bold tracking-widest text-gray-500 uppercase">
+      <span class="hover:text-white transition-colors duration-300">Titan Sanctuary</span>
+      <span>&gt;</span>
+      <span class="text-gold">Protocol Screening</span>
+    </nav>
+
+    <!-- Premium Badge with Scarcity Urgency FOMO -->
+    <div class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full border border-gold/30 bg-gold/5 backdrop-blur-md mb-8 animate-pulse">
+      <span class="w-2 h-2 rounded-full bg-gold"></span>
+      <span class="text-[10px] font-black tracking-widest text-white uppercase font-inter">
+        Now Accepting Applications &mdash; <span class="text-gold text-glow-gold">Only 5 Slots Left for June Intake</span>
+      </span>
+    </div>
+
+    <!-- Main Headline -->
+    <h1 class="text-4xl sm:text-6xl md:text-8xl font-black font-outfit tracking-tight text-white uppercase leading-none mb-6">
+      Unleash Your<br />
+      <span class="text-transparent bg-clip-text bg-gradient-to-r from-gold via-yellow-400 to-amber-500 text-glow-gold">
+        Ultimate Potential
+      </span>
+    </h1>
+
+    <!-- Subtitle -->
+    <p class="max-w-2xl mx-auto text-base sm:text-xl text-gray-300 font-inter font-light leading-relaxed mb-10">
+      Welcome to Titan Elite—where science meets grit. Elevate your baseline with ultra-premium training protocols, luxury spaces, and elite master coaching.
+    </p>
+
+    <!-- CTAs -->
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
+      <button 
+        (click)="openApplicationModal()" 
+        class="w-full sm:w-auto px-8 py-4 rounded-full bg-gold hover:bg-gold-hover text-dark font-black tracking-wider uppercase text-sm shadow-xl shadow-gold/25 transition-all duration-300 hover:-translate-y-1 glow-gold-btn"
+      >
+        Become a Member
+      </button>
+      <button 
+        (click)="scrollToSection('features')" 
+        class="w-full sm:w-auto px-8 py-4 rounded-full bg-white/5 border border-white/10 hover:border-gold/50 hover:bg-white/10 text-white font-bold tracking-wider uppercase text-sm backdrop-blur-md transition-all duration-300 hover:-translate-y-1"
+      >
+        Explore Offerings
+      </button>
+    </div>
+
+    <!-- Cinematic Tour Teaser Card -->
+    <div class="max-w-2xl mx-auto mb-16 relative group cursor-pointer" (click)="openApplicationModal()">
+      <div class="glass-card rounded-3xl p-6 flex flex-col sm:flex-row items-center justify-between border border-white/10 hover:border-gold/30 hover:bg-white/5 transition-all duration-500 overflow-hidden relative">
+        <!-- Spotlight visual backdrop -->
+        <div class="absolute -right-10 top-0 w-40 h-40 bg-gold/10 rounded-full filter blur-3xl group-hover:bg-gold/20 transition-colors duration-500"></div>
+        
+        <div class="flex items-center gap-5 text-left mb-6 sm:mb-0">
+          <div class="w-14 h-14 rounded-full bg-gold/10 border border-gold/20 text-gold flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+            <!-- Play icon SVG -->
+            <svg class="w-6 h-6 ml-1" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M8 5v14l11-7z" />
+            </svg>
+          </div>
+          <div>
+            <h4 class="text-sm font-bold tracking-widest text-white uppercase font-outfit">Cinematic Facility Tour</h4>
+            <p class="text-xs text-gray-400 font-inter font-light mt-1">Experience the design, luxury equipment, and private recovery bays. (30s HD Teaser)</p>
+          </div>
+        </div>
+        <span class="text-[10px] font-black tracking-widest text-gold uppercase border border-gold/30 rounded-full px-4 py-1.5 group-hover:bg-gold group-hover:text-dark transition-all duration-300">
+          Watch Teaser
+        </span>
+      </div>
+    </div>
+
+    <!-- Trust Stats Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-4xl mx-auto">
+      <div class="glass-card rounded-2xl p-6 flex flex-col items-center justify-center text-center">
+        <span class="text-3xl sm:text-4xl font-black font-outfit text-gold tracking-tight mb-1">
+          {{ membersCount() | number }}+
+        </span>
+        <span class="text-xs font-bold tracking-wider text-gray-400 uppercase font-inter">Elite Members</span>
+      </div>
+      <div class="glass-card rounded-2xl p-6 flex flex-col items-center justify-center text-center border-t border-gold/20">
+        <span class="text-3xl sm:text-4xl font-black font-outfit text-white tracking-tight mb-1">
+          {{ coachesCount() }}+
+        </span>
+        <span class="text-xs font-bold tracking-wider text-gold uppercase font-inter">Master Coaches</span>
+      </div>
+      <div class="glass-card rounded-2xl p-6 flex flex-col items-center justify-center text-center">
+        <span class="text-3xl sm:text-4xl font-black font-outfit text-gold tracking-tight mb-1">
+          {{ hoursCount() }}/7
+        </span>
+        <span class="text-xs font-bold tracking-wider text-gray-400 uppercase font-inter">VIP Access</span>
+      </div>
+    </div>
+  </div>
+</section>
