@@ -1,59 +1,52 @@
-# TitanElite
+# TITAN ELITE &mdash; PREMIUM MEMBERSHIP PORTAL
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.12.
+A high-performance, visually stunning landing page and onboarding portal for the premium luxury fitness brand **Titan Elite**. Engineered with modern frontend architectures to deliver an ultra-fast, responsive, and conversion-focused user experience.
 
-## Development server
+---
 
-To start a local development server, run:
+## 🌟 Tech Stack & Infrastructure
 
-```bash
-ng serve
-```
+- **Framework**: Angular 17+ (Standalone, Component-driven Architecture)
+- **Styling**: Tailwind CSS v4 (CSS-first engine utilizing `@theme` and `@utility` layers)
+- **State Management**: Reactive **Angular Signals** for local and dynamic UI state toggles
+- **SEO & Socials**: Dynamic head injection via Angular's `Title` and `Meta` services, and static JSON-LD schemas
+- **Optimization**: Performance-tuned `NgOptimizedImage` using preload LCP anchors
+- **Rendering**: Server-Side Rendering (SSR) and Static Site Generation (SSG) pre-rendered out of the box
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+---
 
-## Code scaffolding
+## 📂 Architectural Structure
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+- **Navbar**: Glassmorphic, sticky navigation bar featuring a responsive hamburger drawer driven by an Angular Signal (`isMenuOpen`).
+- **Hero Sanctuary**: High-impact display typography, breadcrumbs, scarcity tickers ("Only 5 slots left"), and high-performance preloaded backdrop visuals.
+- **Dynamic Stats Ticker**: SSR-safe Signal counters (`membersCount`, `coachesCount`, `hoursCount`) that count up smoothly from zero on page load.
+- **The Titan Advantage**: High-contrast offering cards detailing coaching, metabolic suites, and private amenities.
+- **The Enrollment Experience**: Horizontal stepper timeline connector (Screening $\rightarrow$ Diagnostics $\rightarrow$ Onboarding) linking process cards.
+- **Membership Protocols**: Tier cards (Titan Club, VIP Elite, Olympic Protocol) featuring monthly/yearly price toggling driven by an Angular Signal (`billingCycle`).
+- **Dynamic Accordion FAQ**: Signals-driven FAQs structured semantically to target Google Featured Snippets.
+- **Success Stories**: Testimonials grid with custom reviews, ratings, and member profiles.
+- **Footer Sanctuary**: Strategic Trust badges (Technogym, ACSM), Ritz-Carlton local SEO coordinates, and a Lead Magnet newsletter PDF capture.
+- **Exclusive Onboarding Modal**: A 3-step wizard overlay driven by Signals (`formStep`) that dynamically tracks goal inputs, athlete details, and queues requests.
 
-```bash
-ng generate component component-name
-```
+---
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## 🛠️ Local Installation & Script Commands
 
-```bash
-ng generate --help
-```
+To launch the sanctuary on your local server:
 
-## Building
+1. **Install Dependencies**:
+   ```bash
+   npm install
+   ```
 
-To build the project run:
+2. **Run Local Development Server**:
+   ```bash
+   npm run start
+   ```
+   Open [http://localhost:4200](http://localhost:4200) inside your web browser.
 
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+3. **Verify Production Compile & SSR**:
+   ```bash
+   npm run build
+   ```
+   Generates browser and pre-rendered server-side bundles under `dist/titan-elite`.
